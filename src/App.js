@@ -5,7 +5,7 @@ import {
   Redirect,
   Switch
 }                            from 'react-router-dom';
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from 'styled-components';
 
 import HomePage              from './modules/home/pages/HomePage';
 import LoginPage             from './modules/user/pages/LoginPage';

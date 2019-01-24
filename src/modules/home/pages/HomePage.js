@@ -2,14 +2,15 @@ import React, { Component } from 'react';
 import styled               from 'styled-components';
 
 import bg                   from '../canvas.png';
-import About                from '../components/About'
+import About                from '../components/About';
+import Login                from '../../user/forms/Login';
 
 class HomePage extends Component {
   render() {
     return (
       <HomeWrapper>
         <About />
-        <About />
+        <Login />
       </HomeWrapper>
     )
   }
