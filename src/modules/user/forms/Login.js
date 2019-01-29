@@ -7,9 +7,8 @@ class LoginPage extends Component {
       <FormWrapper>
         <FormInput placeholder='Email' />
         <FormInput placeholder='Password' />
-        <input type="text" />
         <FormButton>
-          Click Here
+          Login
         </FormButton>
       </FormWrapper>
     );
@@ -17,11 +16,15 @@ class LoginPage extends Component {
 }
 
 const FormWrapper = styled.form`
-  padding : 10%;
+  padding        : 10%;
+  display        : flex;
+  flex-direction : column;
 `;
 
 const FormInput = styled.input`
-  margin : 5% 0 !important;
+  margin  : 2% 0 !important;
+  border  : 1px solid #36c2b9;
+  padding : 16px;
 `;
 
 const FormButton = styled.button`
@@ -30,7 +33,10 @@ const FormButton = styled.button`
     color      : #ffff;
     border     : none;
     padding    : 10px;
-    margin-top : 10px;
+    padding    : 20px;
+    margin     : 1% 30%;
+    cursor     : pointer;
+    font-size  : 20px;
    }
 `;
 
