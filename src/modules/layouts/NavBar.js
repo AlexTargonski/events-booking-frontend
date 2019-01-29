@@ -26,9 +26,14 @@ const Wrapper = styled.div`
 `;
 
 const NavBarLink = styled(Link)`
-  color           : #ffff;
-  padding         : 0 5px;
-  text-decoration : none;
+  && {
+    color           : #ffff;
+    padding         : 0 5px;
+    text-decoration : none;
+
+  &:hover {
+    color : #36c2b9;
+  }
 `;
 
 export default LoginPage;
