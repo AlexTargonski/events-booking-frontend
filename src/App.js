@@ -10,6 +10,7 @@ import { createGlobalStyle } from 'styled-components';
 import HomePage              from './modules/home/pages/HomePage';
 import LoginPage             from './modules/user/pages/LoginPage';
 import NavBar                from './modules/layouts/NavBar';
+import EventsPage            from './modules/events/pages/EventsPage';
 
 class App extends Component {
   render() {
@@ -20,8 +21,9 @@ class App extends Component {
           <GlobalStyle />
           <Switch>
             <Redirect from="/" to="/home" exact />
-            <Route path="/home"  component={HomePage} />
-            <Route path="/login" component={LoginPage} />
+            <Route path="/home"   component={HomePage} />
+            <Route path="/login"  component={LoginPage} />
+            <Route path="/events" component={EventsPage} />
           </Switch>
         </Fragment>
       </BrowserRouter>

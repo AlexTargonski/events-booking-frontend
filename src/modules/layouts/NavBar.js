@@ -15,6 +15,9 @@ class LoginPage extends Component {
         <NavBarLink to="/">
           Sign Up
         </NavBarLink>
+        <NavBarLink to="/events">
+          Events
+        </NavBarLink>
       </Wrapper>
     )
   }
