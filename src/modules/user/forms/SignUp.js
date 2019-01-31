@@ -37,7 +37,7 @@ const FormInput = styled.input`
 `;
 
 const FormButton = styled.button`
-  &&& {
+  && {
     background : #36c2b9;
     color      : #ffff;
     border     : none;
@@ -46,6 +46,10 @@ const FormButton = styled.button`
     margin     : 1% auto;
     cursor     : pointer;
     font-size  : 18px;
+   }
+
+   &:hover {
+     background : #4bb8b1;
    }
 `;
 
