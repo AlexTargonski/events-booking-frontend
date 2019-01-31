@@ -41,11 +41,11 @@ const FormButton = styled.button`
     background : #36c2b9;
     color      : #ffff;
     border     : none;
-    padding    : 10px;
-    padding    : 20px;
-    margin     : 1% 30%;
+    width      : 245px;
+    height     : 60px;
+    margin     : 1% auto;
     cursor     : pointer;
-    font-size  : 20px;
+    font-size  : 18px;
    }
 `;
 
