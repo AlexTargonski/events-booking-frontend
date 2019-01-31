@@ -2,21 +2,49 @@ import React, { Component } from 'react';
 import styled               from 'styled-components';
 
 class LoginPage extends Component {
+  constructor() {
+    super();
+    this.state = {
+      form : {
+        email    : '',
+        password : '',
+      },
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.submitHandler = this.submitHandler.bind(this);
+  }
+
+  handleChange(e) {
+   let form = Object.assign({}, this.state.form);
+   form[e.target.name] = e.target.value;
+   this.setState({ form });
+  }
+
+  submitHandler(e) {
+    const { email, password } = this.state.form;
+    e.preventDefault();
+    console.log(email, password)
+  }
+
   render() {
+    console.log(this.state)
     return (
-      <FormWrapper>
+      <FormWrapper onSubmit={this.submitHandler}>
         <h1>Sign up</h1>
         <FormInput
           placeholder='Email'
           name="email"
           type="email"
+          onChange={this.handleChange}
         />
         <FormInput
           placeholder='Password'
           name="password"
           type="password"
+          onChange={this.handleChange}
         />
-        <FormButton>
+        <FormButton type="submit">
           Sign up
         </FormButton>
       </FormWrapper>
