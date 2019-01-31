@@ -24,7 +24,36 @@ class LoginPage extends Component {
   submitHandler(e) {
     const { email, password } = this.state.form;
     e.preventDefault();
-    console.log(email, password)
+
+    let requestBody = {
+      query: `
+        mutation {
+          createUser(userInput: {email: "${email}", password: "${password}"}) {
+            email
+          }
+        }
+      `
+    };
+
+    fetch('http://localhost:8080/graphiql', {
+      method  : 'POST',
+      body    : JSON.stringify(requestBody),
+      headers : {
+        'Content-Type' : 'application/json'
+      }
+    })
+      .then(res => {
+        if (res.status !== 200 && res.status !== 201) {
+          throw new Error('Failed!');
+        }
+        return res.json();
+      })
+      .then(resData => {
+        console.log(resData);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   render() {
