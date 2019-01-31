@@ -12,7 +12,7 @@ class LoginPage extends Component {
         <span style={{color : '#ffff'}}>
           |
         </span>
-        <NavBarLink to="/">
+        <NavBarLink to="/sign_up">
           Sign Up
         </NavBarLink>
         <NavBarLink to="/events">
