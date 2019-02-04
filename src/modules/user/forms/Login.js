@@ -2,11 +2,77 @@ import React, { Component } from 'react';
 import styled               from 'styled-components';
 
 class LoginPage extends Component {
+  constructor() {
+    super();
+    this.state = {
+      form : {
+        email    : '',
+        password : '',
+      },
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.submitHandler = this.submitHandler.bind(this);
+  }
+
+  handleChange(e) {
+   let form = Object.assign({}, this.state.form);
+   form[e.target.name] = e.target.value;
+   this.setState({ form });
+  }
+
+  submitHandler(e) {
+    const { email, password } = this.state.form;
+    e.preventDefault();
+
+    let requestBody = {
+      query: `
+        query {
+          login(email: "${email}", password: "${password}") {
+            userId
+            token
+            tokenExpiration
+          }
+        }
+      `
+    };
+
+    fetch('http://localhost:8080/graphiql', {
+      method  : 'POST',
+      body    : JSON.stringify(requestBody),
+      headers : {
+        'Content-Type' : 'application/json'
+      }
+    })
+      .then(res => {
+        if (res.status !== 200 && res.status !== 201) {
+          throw new Error('Failed!');
+        }
+        return res.json();
+      })
+      .then(resData => {
+        console.log(resData);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
   render() {
     return (
       <FormWrapper>
-        <FormInput placeholder='Email' />
-        <FormInput placeholder='Password' />
+        <FormInput
+          placeholder='Email'
+          name="email"
+          type="email"
+          onChange={this.handleChange}
+        />
+        <FormInput
+          placeholder='Password'
+          name="password"
+          type="password"
+          onChange={this.handleChange}
+        />
         <FormButton>
           Login
         </FormButton>
