@@ -60,7 +60,7 @@ class LoginPage extends Component {
 
   render() {
     return (
-      <FormWrapper>
+      <FormWrapper onSubmit={this.submitHandler}>
         <FormInput
           placeholder='Email'
           name="email"
@@ -73,7 +73,7 @@ class LoginPage extends Component {
           type="password"
           onChange={this.handleChange}
         />
-        <FormButton>
+        <FormButton type="submit">
           Login
         </FormButton>
       </FormWrapper>
