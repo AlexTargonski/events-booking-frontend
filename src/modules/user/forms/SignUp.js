@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import styled               from 'styled-components';
 
 class LoginPage extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       form : {
         email    : '',

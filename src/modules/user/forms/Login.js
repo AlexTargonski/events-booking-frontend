@@ -3,8 +3,8 @@ import styled               from 'styled-components';
 import AuthContext          from '../../../context/auth-context';
 
 class LoginPage extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       form : {
         email    : '',
