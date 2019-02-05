@@ -1,27 +1,35 @@
-import React, { Component } from 'react';
-import styled               from 'styled-components';
-import { Link }             from 'react-router-dom';
+import React       from 'react';
+import styled      from 'styled-components';
+import { Link }    from 'react-router-dom';
 
-class LoginPage extends Component {
-  render() {
-    return (
-      <Wrapper>
-        <NavBarLink to="/login">
-          Login
-        </NavBarLink>
-        <span style={{color : '#ffff'}}>
-          |
-        </span>
-        <NavBarLink to="/sign_up">
-          Sign Up
-        </NavBarLink>
-        <NavBarLink to="/events">
-          Events
-        </NavBarLink>
-      </Wrapper>
-    )
-  }
-}
+import AuthContext from '../../context/auth-context';
+
+const LoginPage = props => (
+  <AuthContext.Consumer>
+    {context => {
+      return (
+        <Wrapper>
+          { !context.token &&
+            <>
+              <NavBarLink to="/login">
+                Login
+              </NavBarLink>
+              <span style={{color : '#ffff'}}>
+                |
+              </span>
+              <NavBarLink to="/sign_up">
+                Sign Up
+              </NavBarLink>
+            </>
+          }
+          <NavBarLink to="/events">
+            Events
+          </NavBarLink>
+        </Wrapper>
+      );
+    }}
+  </AuthContext.Consumer>
+);
 
 const Wrapper = styled.div`
   background : #222534;

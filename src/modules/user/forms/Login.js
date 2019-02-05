@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled               from 'styled-components';
+import AuthContext          from '../../../context/auth-context';
 
 class LoginPage extends Component {
   constructor() {
@@ -14,6 +15,8 @@ class LoginPage extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.submitHandler = this.submitHandler.bind(this);
   }
+
+  static contextType = AuthContext;
 
   handleChange(e) {
    let form = Object.assign({}, this.state.form);
@@ -52,6 +55,13 @@ class LoginPage extends Component {
       })
       .then(resData => {
         console.log(resData);
+        if (resData.data.login.token) {
+          this.context.login(
+            resData.data.login.token,
+            resData.data.login.userId,
+            resData.data.login.tokenExpiration
+          );
+        }
       })
       .catch(err => {
         console.log(err);
