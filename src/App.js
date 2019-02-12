@@ -12,6 +12,7 @@ import LoginPage             from './modules/user/pages/LoginPage';
 import SignUpPage            from './modules/user/pages/SignUpPage';
 import NavBar                from './modules/layouts/NavBar';
 import EventsPage            from './modules/events/pages/EventsPage';
+import BookingsPage          from './modules/bookings/pages/BookingsPage';
 import AuthContext           from './context/auth-context';
 
 class App extends Component {
@@ -46,12 +47,14 @@ class App extends Component {
             <NavBar />
             <GlobalStyle />
             <Switch>
-              {this.state.token && <Redirect from="/login" to="/events" exact />}
+              {this.state.token &&  <Redirect from="/login"    to="/events" exact />}
+              {!this.state.token && <Redirect from="/bookings" to="/login" exact />}
               <Redirect from="/" to="/home" exact />
               <Route path="/home"     component={HomePage} />
               <Route path="/login"    component={LoginPage} />
               <Route path="/sign_up"  component={SignUpPage} />
               <Route path="/events"   component={EventsPage} />
+              <Route path="/bookings" component={BookingsPage} />
             </Switch>
           </AuthContext.Provider>
         </>

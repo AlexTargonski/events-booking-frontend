@@ -30,7 +30,7 @@ const LoginPage = props => (
           </NavBarLink>
           { context.token &&
             <>
-              <NavBarLink to="/">
+              <NavBarLink to="/bookings">
                 Bookings
               </NavBarLink>
               <Button onClick={context.logout}>
