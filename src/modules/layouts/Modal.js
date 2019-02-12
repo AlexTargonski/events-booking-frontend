@@ -31,6 +31,11 @@ const ModalWrapper = styled.div`
   position   : fixed;
   top        : 20vh;
   left       : 5%;
+
+  @media (min-width: 768px) {
+    width : 30rem;
+    left  : calc((100% - 30rem) / 2);
+  }
 `;
 
 const Header = styled.div`
