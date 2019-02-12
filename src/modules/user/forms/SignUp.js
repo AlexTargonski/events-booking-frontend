@@ -57,7 +57,6 @@ class LoginPage extends Component {
   }
 
   render() {
-    console.log(this.state)
     return (
       <FormWrapper onSubmit={this.submitHandler}>
         <h1>Sign up</h1>
