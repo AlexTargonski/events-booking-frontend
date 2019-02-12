@@ -71,6 +71,7 @@ class LoginPage extends Component {
   render() {
     return (
       <FormWrapper onSubmit={this.submitHandler}>
+        <h1>Login</h1>
         <FormInput
           placeholder='Email'
           name="email"
