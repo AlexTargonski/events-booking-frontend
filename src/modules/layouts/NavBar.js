@@ -25,6 +25,19 @@ const LoginPage = props => (
           <NavBarLink to="/events">
             Events
           </NavBarLink>
+          <NavBarLink to="/home">
+            Home
+          </NavBarLink>
+          { context.token &&
+            <>
+              <NavBarLink to="/">
+                Bookings
+              </NavBarLink>
+              <Button onClick={context.logout}>
+                Logout
+              </Button>
+            </>
+          }
         </Wrapper>
       );
     }}
@@ -34,6 +47,15 @@ const LoginPage = props => (
 const Wrapper = styled.div`
   background : #222534;
   padding    : 1% 5%;
+`;
+
+const Button = styled.button`
+  background : #ffff;
+  color      : #222534;
+  font-size  : 16px;
+  margin     : 0 15px;
+  border     : 0;
+  padding    : 4px 15px;
 `;
 
 const NavBarLink = styled(Link)`
