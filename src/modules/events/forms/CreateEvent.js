@@ -27,7 +27,7 @@ class CreateEvent extends Component {
           type="text"
           onChange={this.handleChange}
         />
-        <FormInput
+        <TextArea
           placeholder='Description'
           name="desc"
           type="text"
@@ -57,6 +57,12 @@ const FormWrapper = styled.form`
 `;
 
 const FormInput = styled.input`
+  margin  : 2% 0 !important;
+  border  : 1px solid #36c2b9;
+  padding : 16px;
+`;
+
+const TextArea = styled.textarea`
   margin  : 2% 0 !important;
   border  : 1px solid #36c2b9;
   padding : 16px;
