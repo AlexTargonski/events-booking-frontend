@@ -29,7 +29,7 @@ const ModalWrapper = styled.div`
   background : white;
   box-shadow : 0 2px 8px rgba(0, 0, 0, 0.26);
   position   : fixed;
-  top        : 20vh;
+  top        : 10%;
   left       : 5%;
 
   @media (min-width: 768px) {

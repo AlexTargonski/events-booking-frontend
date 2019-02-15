@@ -45,9 +45,6 @@ class CreateEvent extends Component {
           type="date"
           onChange={this.handleChange}
         />
-        <FormButton type="submit">
-          Create Event
-        </FormButton>
       </FormWrapper>
     );
   }
