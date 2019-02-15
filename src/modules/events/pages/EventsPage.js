@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import Modal                from '../../layouts/Modal';
+import CreateEvent          from '../forms/CreateEvent';
 
 class EventsPage extends Component {
   state = {
@@ -30,7 +31,7 @@ class EventsPage extends Component {
             onCancel={this.modalCancelHandler}
             onConfirm={this.modalConfirmHandler}
           >
-            <p>Modal Content</p>
+            <CreateEvent />
           </Modal>
         )}
         <div>
