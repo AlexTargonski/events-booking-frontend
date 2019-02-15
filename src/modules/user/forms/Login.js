@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import styled               from 'styled-components';
+
 import AuthContext          from '../../../context/auth-context';
+import Button               from '../../layouts/Button';
 
 class LoginPage extends Component {
   state = {
@@ -78,9 +80,9 @@ class LoginPage extends Component {
           type="password"
           onChange={this.handleChange}
         />
-        <FormButton type="submit">
+        <Button type="submit">
           Login
-        </FormButton>
+        </Button>
       </FormWrapper>
     );
   }
@@ -96,23 +98,6 @@ const FormInput = styled.input`
   margin  : 2% 0 !important;
   border  : 1px solid #36c2b9;
   padding : 16px;
-`;
-
-const FormButton = styled.button`
-  && {
-    background : #36c2b9;
-    color      : #ffff;
-    border     : none;
-    width      : 245px;
-    height     : 60px;
-    margin     : 1% auto;
-    cursor     : pointer;
-    font-size  : 18px;
-   }
-
-   &:hover {
-     background : #4bb8b1;
-   }
 `;
 
 export default LoginPage;
