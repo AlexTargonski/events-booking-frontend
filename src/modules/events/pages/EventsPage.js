@@ -2,11 +2,14 @@ import React, { Component } from 'react';
 
 import Modal                from '../../layouts/Modal';
 import CreateEvent          from '../forms/CreateEvent';
+import AuthContext          from '../../../context/auth-context';
 
 class EventsPage extends Component {
   state = {
     creating : false,
   };
+
+  static contextType = AuthContext;
 
   startCreateEventHandler = () => {
     this.setState({ creating: true });
@@ -35,9 +38,12 @@ class EventsPage extends Component {
           </Modal>
         )}
         <div>
-          <button onClick={this.startCreateEventHandler}>
-            Create Event
-          </button>
+          {
+            this.context.token &&
+            <button onClick={this.startCreateEventHandler}>
+              Create Event
+            </button>
+          }
         </div>
       </React.Fragment>
     );
