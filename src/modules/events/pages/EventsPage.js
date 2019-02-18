@@ -15,8 +15,8 @@ class EventsPage extends Component {
     this.setState({ creating: true });
   };
 
-  modalConfirmHandler = () => {
-    this.setState({ creating: false });
+  modalConfirmHandler = state => {
+    this.setState({ creating: state });
   };
 
   modalCancelHandler = () => {
@@ -34,7 +34,9 @@ class EventsPage extends Component {
             onCancel={this.modalCancelHandler}
             onConfirm={this.modalConfirmHandler}
           >
-            <CreateEvent />
+            <CreateEvent
+              modalConfirmHandler={this.modalConfirmHandler}
+            />
           </Modal>
         )}
         <div>

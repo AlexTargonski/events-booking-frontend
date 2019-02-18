@@ -71,7 +71,7 @@ class CreateEvent extends Component {
         return res.json();
       })
       .then(resData => {
-        console.log(resData)
+        this.props.modalConfirmHandler(false);
       })
       .catch(err => {
         console.log(err);
