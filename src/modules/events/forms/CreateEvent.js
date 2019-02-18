@@ -98,7 +98,7 @@ class CreateEvent extends Component {
         <FormInput
           placeholder='Price'
           name="price"
-          type="text"
+          type="number"
           onChange={this.handleChange}
         />
         <FormInput
