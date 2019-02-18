@@ -5,7 +5,7 @@ import CreateEvent          from '../forms/CreateEvent';
 
 class EventsPage extends Component {
   state = {
-    creating : false
+    creating : false,
   };
 
   startCreateEventHandler = () => {
