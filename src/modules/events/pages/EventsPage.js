@@ -7,9 +7,15 @@ import AuthContext          from '../../../context/auth-context';
 class EventsPage extends Component {
   state = {
     creating : false,
+    events   : [],
+    loaded   : false,
   };
 
   static contextType = AuthContext;
+
+  componentDidMount() {
+     this.fetchEvents();
+   };
 
   startCreateEventHandler = () => {
     this.setState({ creating: true });
@@ -23,7 +29,52 @@ class EventsPage extends Component {
     this.setState({ creating: false });
   };
 
+  fetchEvents() {
+    const requestBody = {
+      query: `
+        query {
+          events {
+            _id
+            title
+            desc
+            date
+            price
+            creator {
+              _id
+              email
+            }
+          }
+        }
+      `
+    };
+
+    fetch('http://localhost:8080/graphiql', {
+      method: 'POST',
+      body: JSON.stringify(requestBody),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(res => {
+        if (res.status !== 200 && res.status !== 201) {
+          throw new Error('Failed!');
+        }
+        return res.json();
+      })
+      .then(resData => {
+        const events = resData.data.events;
+        this.setState({ events: events, loaded : true });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
   render() {
+    const { events, loaded } = this.state
+
+    console.log(events)
+
     return (
       <React.Fragment>
         {this.state.creating && (
@@ -45,6 +96,12 @@ class EventsPage extends Component {
             <button onClick={this.startCreateEventHandler}>
               Create Event
             </button>
+          }
+          {
+            loaded?
+            events.map(e => <p key={e._id}>{e.title}</p>)
+            :
+            <p>loading</p>
           }
         </div>
       </React.Fragment>
