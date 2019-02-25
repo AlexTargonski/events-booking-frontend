@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Modal                from '../../layouts/Modal';
 import CreateEvent          from '../forms/CreateEvent';
 import AuthContext          from '../../../context/auth-context';
+import EventCard            from '../components/EventCard';
 
 class EventsPage extends Component {
   state = {
@@ -99,7 +100,12 @@ class EventsPage extends Component {
           }
           {
             loaded?
-            events.map(e => <p key={e._id}>{e.title}</p>)
+            events.map(event =>
+              <EventCard
+                key={event._id}
+                event={event}
+              />
+            )
             :
             <p>loading</p>
           }
