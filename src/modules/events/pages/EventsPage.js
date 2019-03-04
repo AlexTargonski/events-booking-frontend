@@ -125,6 +125,7 @@ class EventsPage extends Component {
                 key={event._id}
                 event={event}
                 showDetails={this.showDetails}
+                userId={this.context.userId}
               />
             )
             :
