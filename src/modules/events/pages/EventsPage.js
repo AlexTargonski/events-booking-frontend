@@ -81,11 +81,11 @@ class EventsPage extends Component {
   };
 
   render() {
-    const { events, loaded, selectedEvent } = this.state
+    const { events, loaded, selectedEvent, creating } = this.state
 
     return (
       <React.Fragment>
-        {this.state.creating && (
+        {creating && (
           <Modal
             title="Add Event"
             canCancel
