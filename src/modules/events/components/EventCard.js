@@ -2,6 +2,8 @@ import React  from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
 
+import Button from '../../layouts/Button';
+
 const EventCard = ({
   event: {
     _id,
@@ -15,9 +17,9 @@ const EventCard = ({
     <h3>{title}</h3>
     <p>{moment(date).format('D MMM HH:mm')}</p>
     <h3>{price}$</h3>
-    <button onClick={showDetails.bind(null, _id)}>
+    <Button onClick={showDetails.bind(null, _id)}>
       Show Details
-    </button>
+    </Button>
   </CardWrapper>
 )
 
