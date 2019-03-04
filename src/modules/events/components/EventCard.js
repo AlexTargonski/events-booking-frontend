@@ -4,15 +4,20 @@ import moment from 'moment';
 
 const EventCard = ({
   event: {
+    _id,
     title,
     date,
     price,
-  }
+  },
+  showDetails,
 }) => (
   <CardWrapper>
     <h3>{title}</h3>
     <p>{moment(date).format('D MMM HH:mm')}</p>
     <h3>{price}$</h3>
+    <button onClick={showDetails.bind(null, _id)}>
+      Show Details
+    </button>
   </CardWrapper>
 )
 

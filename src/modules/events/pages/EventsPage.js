@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import moment               from 'moment';
 
 import Modal                from '../../layouts/Modal';
 import CreateEvent          from '../forms/CreateEvent';
@@ -7,9 +8,10 @@ import EventCard            from '../components/EventCard';
 
 class EventsPage extends Component {
   state = {
-    creating : false,
-    events   : [],
-    loaded   : false,
+    creating      : false,
+    events        : [],
+    loaded        : false,
+    selectedEvent : null,
   };
 
   static contextType = AuthContext;
@@ -27,7 +29,7 @@ class EventsPage extends Component {
   };
 
   modalCancelHandler = () => {
-    this.setState({ creating: false });
+    this.setState({ creating: false, selectedEvent: null });
   };
 
   fetchEvents() {
@@ -71,10 +73,15 @@ class EventsPage extends Component {
       });
   };
 
-  render() {
-    const { events, loaded } = this.state
+  showDetails = eventId => {
+    this.setState(prevState => {
+      const selectedEvent = prevState.events.find(e => e._id === eventId);
+      return { selectedEvent: selectedEvent };
+    });
+  };
 
-    console.log(events)
+  render() {
+    const { events, loaded, selectedEvent } = this.state
 
     return (
       <React.Fragment>
@@ -91,6 +98,19 @@ class EventsPage extends Component {
             />
           </Modal>
         )}
+        {selectedEvent && (
+          <Modal
+            title="Event Details"
+            canCancel
+            canConfirm
+            onCancel={this.modalCancelHandler}
+          >
+            <h2>{selectedEvent.title}</h2>
+            <p>{selectedEvent.desc}</p>
+            <p>{moment(selectedEvent.date).format('D MMM HH:mm')}</p>
+            <p>{selectedEvent.price} $</p>
+          </Modal>
+        )}
         <div>
           {
             this.context.token &&
@@ -104,6 +124,7 @@ class EventsPage extends Component {
               <EventCard
                 key={event._id}
                 event={event}
+                showDetails={this.showDetails}
               />
             )
             :
