@@ -80,6 +80,46 @@ class EventsPage extends Component {
     });
   };
 
+  bookEvent = () => {
+    if (!this.context.token) {
+      this.setState({ selectedEvent: null });
+      return;
+    }
+    const requestBody = {
+      query: `
+          mutation {
+            bookEvent(eventId: "${this.state.selectedEvent._id}") {
+              _id
+             createdAt
+             updatedAt
+            }
+          }
+        `
+    };
+
+    fetch('http://localhost:8080/graphiql', {
+      method: 'POST',
+      body: JSON.stringify(requestBody),
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + this.context.token
+      }
+    })
+      .then(res => {
+        if (res.status !== 200 && res.status !== 201) {
+          throw new Error('Failed!');
+        }
+        return res.json();
+      })
+      .then(resData => {
+        console.log(resData);
+        this.setState({ selectedEvent: null });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
   render() {
     const { events, loaded, selectedEvent, creating } = this.state
 
@@ -104,6 +144,7 @@ class EventsPage extends Component {
             canCancel
             canConfirm
             onCancel={this.modalCancelHandler}
+            onConfirm={this.bookEvent}
           >
             <h2>{selectedEvent.title}</h2>
             <p>{selectedEvent.desc}</p>
