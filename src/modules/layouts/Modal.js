@@ -15,11 +15,6 @@ const Modal = props => (
           Cancel
         </button>
       )}
-      {props.canConfirm && (
-        <button onClick={props.onConfirm}>
-          Confirm
-        </button>
-      )}
     </Actions>
   </ModalWrapper>
 );
