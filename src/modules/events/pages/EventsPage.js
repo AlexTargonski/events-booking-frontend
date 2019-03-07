@@ -6,6 +6,8 @@ import CreateEvent          from '../forms/CreateEvent';
 import AuthContext          from '../../../context/auth-context';
 import EventCard            from '../components/EventCard';
 
+import Button               from '../../layouts/Button';
+
 class EventsPage extends Component {
   state = {
     creating      : false,
@@ -144,7 +146,9 @@ class EventsPage extends Component {
             <p>{selectedEvent.desc}</p>
             <p>{moment(selectedEvent.date).format('D MMM HH:mm')}</p>
             <p>{selectedEvent.price} $</p>
-
+            <Button onClick={this.bookEvent}>
+              Book This Event
+            </Button>
           </Modal>
         )}
         <div>
