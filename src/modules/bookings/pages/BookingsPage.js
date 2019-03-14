@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import moment               from 'moment';
+import styled               from 'styled-components';
 
 import AuthContext          from '../../../context/auth-context';
 
@@ -66,10 +67,10 @@ class BookingsPage extends Component {
           :
           <ul>
             {bookings.map(booking => (
-              <li key={booking._id}>
+              <Booking key={booking._id}>
                 {booking.event.title} -{' '}
                 {moment(booking.createdAt.date).format('D MMM HH:mm')}
-              </li>
+              </Booking>
             ))}
           </ul>
         }
@@ -77,5 +78,12 @@ class BookingsPage extends Component {
     );
   }
 }
+
+const Booking = styled.li`
+  padding    : 2%;
+  margin     : 1% 2%;
+  background : #f4f4f4;
+  list-style : none;
+`;
 
 export default BookingsPage;
