@@ -108,8 +108,8 @@ class BookingsPage extends Component {
           <ul>
             {bookings.map(booking => (
               <Booking key={booking._id}>
-                {booking.event.title}
-                {moment(booking.createdAt.date).format('D MMM HH:mm')}
+                <h2>{booking.event.title}</h2>
+                <p>{moment(booking.createdAt.date).format('D MMM HH:mm')}</p>
                 <Button onClick={this.deleteBooking.bind(this, booking._id)}>
                   Cancel
                 </Button>
