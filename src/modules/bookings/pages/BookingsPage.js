@@ -3,6 +3,7 @@ import moment               from 'moment';
 import styled               from 'styled-components';
 
 import AuthContext          from '../../../context/auth-context';
+import Button               from '../../layouts/Button';
 
 class BookingsPage extends Component {
   state = {
@@ -107,11 +108,11 @@ class BookingsPage extends Component {
           <ul>
             {bookings.map(booking => (
               <Booking key={booking._id}>
-                {booking.event.title} -{' '}
+                {booking.event.title}
                 {moment(booking.createdAt.date).format('D MMM HH:mm')}
-                <button onClick={this.deleteBooking.bind(this, booking._id)}>
+                <Button onClick={this.deleteBooking.bind(this, booking._id)}>
                   Cancel
-                </button>
+                </Button>
               </Booking>
             ))}
           </ul>
@@ -122,10 +123,12 @@ class BookingsPage extends Component {
 }
 
 const Booking = styled.li`
-  padding    : 2%;
-  margin     : 1% 2%;
-  background : #f4f4f4;
-  list-style : none;
+  display        : flex;
+  flex-direction : column;
+  padding        : 2%;
+  margin         : 1% 2%;
+  background     : #f4f4f4;
+  list-style     : none;
 `;
 
 export default BookingsPage;
